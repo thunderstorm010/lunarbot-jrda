@@ -9,8 +9,9 @@ class OzelKomut : ListenerAdapter() {
     override fun onMessageReceived(event: MessageReceivedEvent) {
         if (event.isWebhookMessage) return
         if (event.author.isBot) return
-        if (event.message.contentRaw != "!ip" || event.message.contentRaw != "!kayıt") return
-        if (event.message.contentRaw == "!ip" && event.message.channel.idLong == 738553651655737377) {
+        if (event.message.contentRaw != "!ip") return
+        if (event.message.contentRaw != "!kayıt") return
+        if (event.message.contentRaw == "!ip" && event.message.channel.idLong == 738553651655737377L) {
             val embed = EmbedBuilder()
                 .setAuthor(
                     event.author.name + "#" + event.author.discriminator + ", ",
@@ -24,10 +25,10 @@ class OzelKomut : ListenerAdapter() {
                 )
                 .setFooter(Main.footer_text, Main.footer_icon_url)
                 .build()
-            event.message.channel.sendMessage(embed).queue()
+            event.channel.sendMessage(embed).queue()
             return
         }
-        if (event.message.contentRaw == "!kayıt" && event.message.channel.idLong == 738553650611224590) {
+        else if (event.message.contentRaw == "!kayıt" && event.message.channel.idLong == 738553650611224590L) {
             val embed = EmbedBuilder()
                 .setAuthor(
                     event.author.name + "#" + event.author.discriminator + ", ",
@@ -51,6 +52,7 @@ class OzelKomut : ListenerAdapter() {
                 .setFooter(Main.footer_text, Main.footer_icon_url)
                 .build()
             event.message.channel.sendMessage(embed).queue()
+            return
         }
 
 

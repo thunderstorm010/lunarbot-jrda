@@ -55,7 +55,7 @@ class Kayit : ListenerAdapter() {
                 .build()
             event.channel.sendMessage(embed).queue()
         }
-        if(event.message.mentionedMembers.isEmpty()) {
+        if(event.message.mentionedMembers.size == 0) {
             val embed = EmbedBuilder()
                 .setAuthor(
                     event.author.name + "#" + event.author.discriminator + ", ",
@@ -70,7 +70,7 @@ class Kayit : ListenerAdapter() {
         }
         val nick = event.message.contentRaw.split(" ")[1]
         val realName = event.message.contentRaw.split(" ")[2]
-        val yas = event.message.contentRaw.split(" ")[1]
+        val yas = event.message.contentRaw.split(" ")[3]
         val mentionedMember = event.message.mentionedMembers[0]
 
         mentionedMember.modifyNickname("${nick}/${realName}-[${yas}]").queue()
