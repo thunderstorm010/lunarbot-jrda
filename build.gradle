@@ -22,7 +22,7 @@ compileKotlin {
 shadowJar {
     shadowJar {
         manifest {
-            attributes 'Main-Class': "com.thunderstorm010.lunarbotjda.Main"
+            attributes 'Main-Class': "Main"
         }
     }
 }

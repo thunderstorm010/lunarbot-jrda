@@ -1,5 +1,4 @@
-package com.thunderstorm010.lunarbotjda
-
+import com.thunderstorm010.lunarbotjda.*
 import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.requests.GatewayIntent
 
@@ -21,8 +20,14 @@ object Main {
         jda
             .addEventListeners(
                 Deleter(),
-                Avatar(), Espri(), Welcome(), Ready(), Shutdown(),
-                Dmduyuru(), OzelKomut(), Yardim()
+                Avatar(),
+                Espri(),
+                Welcome(),
+                Ready(),
+                Shutdown(),
+                Dmduyuru(),
+                OzelKomut(),
+                Yardim()
             )
             .build()
             .awaitReady()
