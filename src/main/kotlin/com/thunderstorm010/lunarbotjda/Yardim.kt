@@ -13,7 +13,7 @@ class Yardim : ListenerAdapter() {
         if (event.author.isBot) return
         if (!event.message.contentRaw.startsWith("!yardım")) return
         val description =
-            "!yardım" +
+            "!yardım :: Bu mesajı gösterir." +
                     "\n!avatar :: Kişinin avatarını gösterir." +
                     "\n!avatar [kullanıcı etiketi] :: Belirtilen kişinin avatarını gösterir." +
                     "\n!dmduyuru [duyuru mesajı] :: Belirtilen mesajı DM üzerinden herkese duyurur." +

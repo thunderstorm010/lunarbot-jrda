@@ -8,7 +8,7 @@ object BotProperties {
      * Bot owner's ID. Used to serve specific commands.
      */
     @JvmStatic
-    var BOT_OWNER_ID = "510498560391774208"
+    var BOT_OWNER_ID = "671444887769579551"
 
     /**
      * Bots activity type.
@@ -24,6 +24,9 @@ object BotProperties {
 
     @JvmStatic
     var DMDUYURU_EMBED_TITLE = "Lunar Jailbreak'ten"
+
+    @JvmStatic
+    var KAYIT_EDEBILIR_ROLE_ID: Long = 0L
 
 
 
