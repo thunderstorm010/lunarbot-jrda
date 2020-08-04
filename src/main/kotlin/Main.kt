@@ -16,7 +16,7 @@ object Main {
     fun main(args: Array<String>) {
         val token = System.getenv("BOT_TOKEN")
         val jda = JDABuilder.createDefault(token)
-        jda.enableIntents(listOf(GatewayIntent.GUILD_MEMBERS))
+        jda.enableIntents(listOf(GatewayIntent.GUILD_MEMBERS,GatewayIntent.DIRECT_MESSAGES))
         jda
             .addEventListeners(
                 Deleter(),

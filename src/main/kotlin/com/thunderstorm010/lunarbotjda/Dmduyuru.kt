@@ -71,7 +71,7 @@ class Dmduyuru : ListenerAdapter() {
                     event.author.effectiveAvatarUrl
                 )
                 .build()
-            event.guild.members.forEach { f ->
+            for (f in event.guild.members) {
                 if (f.user != f.jda.selfUser || !f.user.isBot) {
                     f.user.openPrivateChannel()
                         .queue {
