@@ -8,7 +8,7 @@ object BotProperties {
      * Bot owner's ID. Used to serve specific commands.
      */
     @JvmStatic
-    var BOT_OWNER_ID = "510498560391774208"
+    var BOT_OWNER_ID = "671444887769579551"
 
     /**
      * Bots activity type.
