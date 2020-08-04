@@ -7,6 +7,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter
 
 class OzelKomut : ListenerAdapter() {
     override fun onMessageReceived(event: MessageReceivedEvent) {
+        if (event.isWebhookMessage) return
         if (event.author.isBot) return
         if (event.message.contentRaw != "!ip" || event.message.contentRaw != "!kayıt") return
         if (event.message.contentRaw == "!ip" && event.message.channel.idLong != 738553651655737377) return

@@ -7,6 +7,7 @@ import java.lang.IndexOutOfBoundsException
 
 class Kayit : ListenerAdapter() {
     override fun onGuildMessageReceived(event: GuildMessageReceivedEvent) {
+        if (event.isWebhookMessage) return
         if (event.author.isBot) return
         if (!event.message.contentRaw.startsWith("!kayıtet")) return
         try {

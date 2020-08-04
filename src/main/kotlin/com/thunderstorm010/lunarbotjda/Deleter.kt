@@ -9,7 +9,8 @@ import java.time.Duration
 
 class Deleter : ListenerAdapter() {
     override fun onGuildMessageReceived(event: GuildMessageReceivedEvent) {
-        if (event.member!!.user.isBot) return
+        if (event.isWebhookMessage) return
+        if (event.author.isBot) return
         if (!event.message.contentRaw.startsWith("!sil")) return
         if (!event.member!!.hasPermission(Permission.MESSAGE_MANAGE)) {
             val embed = EmbedBuilder()

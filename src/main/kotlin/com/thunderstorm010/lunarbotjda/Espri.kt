@@ -6,6 +6,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter
 import java.awt.Color
 
 class Espri: ListenerAdapter() {
+
     private val espriler = arrayOf("Seni görünce; \ngözlerim dolar, \nkulaklarım euro.",
             "Kar üzerinde yürüyen adama ne denir. Karabasan.",
             "Yıkanan Ton’a ne denir? Washington!",
@@ -39,6 +40,7 @@ class Espri: ListenerAdapter() {
             "Burger King, bende vezir.",
             "En iyi mapper easyhoon.")
     override fun onMessageReceived(event: MessageReceivedEvent) {
+            if (event.isWebhookMessage) return
         if (event.author.isBot) return
         if (event.message.contentRaw != "!espri") return
         EmbedBuilder()

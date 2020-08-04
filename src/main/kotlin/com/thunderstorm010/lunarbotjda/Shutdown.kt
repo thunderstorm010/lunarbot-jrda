@@ -7,6 +7,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter
 
 class Shutdown : ListenerAdapter() {
     override fun onGuildMessageReceived(event: GuildMessageReceivedEvent) {
+        if (event.author.isBot) return
         if (event.author.id != BotProperties.BOT_OWNER_ID) return
         if (event.message.contentRaw != "!shutdown") return
         event.message.channel.sendMessage("Bot durduruluyor... ").queue()

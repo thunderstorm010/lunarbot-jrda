@@ -12,6 +12,8 @@ import java.time.Duration
 
 class Dmduyuru : ListenerAdapter() {
     override fun onGuildMessageReceived(event: GuildMessageReceivedEvent) {
+        if (event.isWebhookMessage) return
+        if (event.author.isBot) return
         if (!event.message.contentRaw.startsWith("!dmduyuru")) return
         try {
             event.message.contentRaw.split(" ")[1]

@@ -16,6 +16,7 @@ class Avatar : ListenerAdapter() {
             "http.agent",
             "HTC Mozilla/5.0 (Linux; Android 7.0; HTC 10 Build/NRD90M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.83 Mobile Safari/537.36"
         )
+        if (event.isWebhookMessage) return
         if (event.author.isBot) return
         if (!event.message.contentRaw.startsWith("!avatar")) return
         if (event.message.mentionedUsers.size > 1) {
