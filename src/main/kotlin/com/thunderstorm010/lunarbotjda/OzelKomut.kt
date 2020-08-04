@@ -10,51 +10,49 @@ class OzelKomut : ListenerAdapter() {
         if (event.isWebhookMessage) return
         if (event.author.isBot) return
         if (event.message.contentRaw != "!ip" || event.message.contentRaw != "!kayıt") return
-        if (event.message.contentRaw == "!ip" && event.message.channel.idLong != 738553651655737377) return
-        if (event.message.contentRaw == "!kayıt" && event.message.channel.idLong != 738553650611224590) return
-        when (event.message.contentRaw) {
-            "!kayıt" -> {
-                val embed = EmbedBuilder()
-                    .setAuthor(
-                        event.author.name + "#" + event.author.discriminator + ", ",
-                        null,
-                        event.author.effectiveAvatarUrl
-                    )
-                    .setTitle("!kayıt")
-                    .setDescription(
-                        "``\uD83C\uDF1FSunucumuza kayıt olmak için aşağıdaki formu doldurmalısınız \uD83C\uDF1F``\n" +
-                                "\n" +
-                                "```Nicknameniz : \n" +
-                                "İsminiz : \n" +
-                                "Yaşınız : \n" +
-                                "Steam Profil Linkiniz : ```\n" +
-                                "``\uD83C\uDF0CNotlar\uD83C\uDF0C``\n" +
-                                "\n" +
-                                "**:sparkles:Eğer günler geçmesine rağmen kayıt edilmediyseniz kayıt gereksinimlerini karşılamıyorsunuzdur.\n" +
-                                ":sparkles:Bilgileri doğru vermediğiniz sürece kayıt edilmezsiniz.\n" +
-                                ":sparkles:Bilgileri verdikten sonra acele etmeyin en geç gün içinde kayıt edilirsiniz.**"
-                    )
-                    .setFooter(Main.footer_text, Main.footer_icon_url)
-                    .build()
-                event.message.channel.sendMessage(embed).queue()
-            }
-            "!ip" -> {
-                val embed = EmbedBuilder()
-                    .setAuthor(
-                        event.author.name + "#" + event.author.discriminator + ", ",
-                        null,
-                        event.author.effectiveAvatarUrl
-                    )
-                    .setTitle("!ip")
-                    .setDescription(
-                        "**:star2: Sunucu IP Adresi : 185.193.165.2**\n" +
-                                "**:star2: Discord Adresimiz :  https://discord.gg/UcJayRk**"
-                    )
-                    .setFooter(Main.footer_text, Main.footer_icon_url)
-                    .build()
-                event.message.channel.sendMessage(embed).queue()
-            }
+        if (event.message.contentRaw == "!ip" && event.message.channel.idLong == 738553651655737377) {
+            val embed = EmbedBuilder()
+                .setAuthor(
+                    event.author.name + "#" + event.author.discriminator + ", ",
+                    null,
+                    event.author.effectiveAvatarUrl
+                )
+                .setTitle("!ip")
+                .setDescription(
+                    "**:star2: Sunucu IP Adresi : 185.193.165.2**\n" +
+                            "**:star2: Discord Adresimiz :  https://discord.gg/UcJayRk**"
+                )
+                .setFooter(Main.footer_text, Main.footer_icon_url)
+                .build()
+            event.message.channel.sendMessage(embed).queue()
+            return
         }
+        if (event.message.contentRaw == "!kayıt" && event.message.channel.idLong == 738553650611224590) {
+            val embed = EmbedBuilder()
+                .setAuthor(
+                    event.author.name + "#" + event.author.discriminator + ", ",
+                    null,
+                    event.author.effectiveAvatarUrl
+                )
+                .setTitle("!kayıt")
+                .setDescription(
+                    "``\uD83C\uDF1FSunucumuza kayıt olmak için aşağıdaki formu doldurmalısınız \uD83C\uDF1F``\n" +
+                            "\n" +
+                            "```Nicknameniz : \n" +
+                            "İsminiz : \n" +
+                            "Yaşınız : \n" +
+                            "Steam Profil Linkiniz : ```\n" +
+                            "``\uD83C\uDF0CNotlar\uD83C\uDF0C``\n" +
+                            "\n" +
+                            "**:sparkles:Eğer günler geçmesine rağmen kayıt edilmediyseniz kayıt gereksinimlerini karşılamıyorsunuzdur.\n" +
+                            ":sparkles:Bilgileri doğru vermediğiniz sürece kayıt edilmezsiniz.\n" +
+                            ":sparkles:Bilgileri verdikten sonra acele etmeyin en geç gün içinde kayıt edilirsiniz.**"
+                )
+                .setFooter(Main.footer_text, Main.footer_icon_url)
+                .build()
+            event.message.channel.sendMessage(embed).queue()
+        }
+
 
     }
 }
