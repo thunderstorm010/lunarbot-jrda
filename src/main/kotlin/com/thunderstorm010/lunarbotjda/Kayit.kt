@@ -4,6 +4,7 @@ import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
 import java.lang.IndexOutOfBoundsException
+import java.time.Duration
 
 class Kayit : ListenerAdapter() {
     override fun onGuildMessageReceived(event: GuildMessageReceivedEvent) {
@@ -75,6 +76,19 @@ class Kayit : ListenerAdapter() {
 
         mentionedMember.modifyNickname("${nick}/${realName}-[${yas}]").queue()
         event.guild.addRoleToMember(mentionedMember,event.jda.getRoleById(BotProperties.KAYIT_EDEBILIR_ROLE_ID)!!).queue()
+        EmbedBuilder()
+            .setAuthor(
+                event.author.name + "#" + event.author.discriminator + ", ",
+                null,
+                event.author.effectiveAvatarUrl
+            )
+            .setTitle("!kayıtet")
+            .setFooter(Main.footer_text,Main.footer_icon_url)
+            .setDescription("İşlem başarıyla tamamlandı.")
+            .build().let {
+                event.channel.sendMessage(it).delay(Duration.ofSeconds(5))
+                    .flatMap { it.delete() }
+            }
 
 
     }
