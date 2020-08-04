@@ -29,7 +29,7 @@ shadowJar {
 
 
 task stage(type: JavaExec) {
-    main = 'com.thunderstorm010.lunarbot.Main'
+    main = 'Main'
     classpath = sourceSets.main.runtimeClasspath
 }
 
