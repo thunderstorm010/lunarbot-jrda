@@ -29,7 +29,7 @@ object Main {
                 Ready(),
                 Shutdown(),
                 Dmduyuru(),
-                Ozelkomut(),
+                komutttahuojrwekdrs(),
                 Yardim(),
                 Kayit()
             )
