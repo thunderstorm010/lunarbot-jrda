@@ -27,7 +27,8 @@ object Main {
                 Shutdown(),
                 Dmduyuru(),
                 OzelKomut(),
-                Yardim()
+                Yardim(),
+                Kayit()
             )
             .build()
             .awaitReady()
