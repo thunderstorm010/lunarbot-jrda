@@ -16,7 +16,7 @@ class Dmduyuru : ListenerAdapter() {
         if (event.author.isBot) return
         if (!event.message.contentRaw.startsWith("!dmduyuru")) return
         try {
-            event.message.contentRaw.split(" ")[1]
+            event.message.contentRaw.split(",")[1]
         } catch (e: IndexOutOfBoundsException) {
             EmbedBuilder()
                 .setAuthor(
@@ -75,7 +75,7 @@ class Dmduyuru : ListenerAdapter() {
                                             member.user.effectiveAvatarUrl
                                         )
                                         .setTitle("${BotProperties.DMDUYURU_EMBED_TITLE} yeni bir duyuru var")
-                                        .setDescription(event.message.contentRaw.split(" ")[1])
+                                        .setDescription(event.message.contentRaw.split(",")[1])
                                         .setFooter("Duyuru yapan: " + event.member!!.user.name + "#" + event.member!!.user.discriminator,
                                             event.member!!.user.effectiveAvatarUrl)
                                         .build()
