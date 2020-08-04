@@ -75,7 +75,7 @@ class Kayit : ListenerAdapter() {
         val mentionedMember = event.message.mentionedMembers[0]
 
         mentionedMember.modifyNickname("${nick}/${realName}-[${yas}]").queue()
-        event.guild.addRoleToMember(mentionedMember,event.jda.getRoleById(BotProperties.KAYIT_EDEBILIR_ROLE_ID)!!).queue()
+        event.guild.addRoleToMember(mentionedMember,event.jda.getRoleById(738553650531795049)!!).queue()
         EmbedBuilder()
             .setAuthor(
                 event.author.name + "#" + event.author.discriminator + ", ",
