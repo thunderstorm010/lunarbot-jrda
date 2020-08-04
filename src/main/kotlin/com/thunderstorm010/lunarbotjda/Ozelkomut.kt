@@ -6,9 +6,16 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter
 
 class Ozelkomut: ListenerAdapter() {
     override fun onGuildMessageReceived(event: GuildMessageReceivedEvent) {
-        if (event.author.isBot) return
-        if (event.message.contentRaw != "!ip" || event.message.contentRaw != "!kayıt") return
+        if (event.author.isBot) {
+            println("Event author is bot! returning! Message content is: " + event.message.contentRaw)
+            return
+        }
+        if (event.message.contentRaw != "!ip" || event.message.contentRaw != "!kayıt") {
+            println("Message ctntn. isnt any of ip or kayıt! returning! Message content is: " + event.message.contentRaw)
+            return
+        }
         if (event.message.contentRaw == "!ip") {
+            println("Message content is !ip")
             val embed = EmbedBuilder()
                 .setAuthor(
                     event.author.name + "#" + event.author.discriminator + ", ",
@@ -25,6 +32,7 @@ class Ozelkomut: ListenerAdapter() {
             event.channel.sendMessage(embed).queue()
         }
         else {
+            println("Message content is !kayıt")
             val embed = EmbedBuilder()
                 .setAuthor(
                     event.author.name + "#" + event.author.discriminator + ", ",
