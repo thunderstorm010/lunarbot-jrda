@@ -14,7 +14,7 @@ object BotProperties {
      * Bots activity type.
      */
     @JvmStatic
-    var BOT_DEFAULT_ACTIVITY_TYPE = Activity.playing("185.193.165.2' de")
+    var BOT_DEFAULT_ACTIVITY_TYPE = Activity.playing("185.193.165.2'de")
 
     /**
      * Bots status.
