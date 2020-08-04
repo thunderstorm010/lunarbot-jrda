@@ -1,7 +1,7 @@
 package com.thunderstorm010.lunarbotjda
 
 import Main
-import com.jagrosh.jdautilities.commons.waiter.EventWaiter
+
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
