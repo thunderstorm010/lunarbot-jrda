@@ -8,6 +8,7 @@ import java.lang.IndexOutOfBoundsException
 class Kayit : ListenerAdapter() {
     override fun onGuildMessageReceived(event: GuildMessageReceivedEvent) {
         if (event.author.isBot) return
+        if (!event.message.contentRaw.startsWith("!kayıtet")) return
         try {
             event.message.contentRaw.split(" ")[1]
         } catch (e: IndexOutOfBoundsException) {
