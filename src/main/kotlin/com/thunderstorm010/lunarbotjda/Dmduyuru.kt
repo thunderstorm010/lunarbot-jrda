@@ -5,9 +5,11 @@ import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
 import net.dv8tion.jda.api.utils.MemberCachePolicy
+import org.ini4j.Reg
 import java.lang.Exception
 import java.lang.UnsupportedOperationException
 import java.time.Duration
+import java.util.regex.Pattern
 
 
 class Dmduyuru : ListenerAdapter() {
@@ -16,7 +18,7 @@ class Dmduyuru : ListenerAdapter() {
         if (event.author.isBot) return
         if (!event.message.contentRaw.startsWith("!dmduyuru")) return
         try {
-            event.message.contentRaw.split(",")[1]
+            event.message.contentRaw.split(Regex(" "),2)[1]
         } catch (e: IndexOutOfBoundsException) {
             EmbedBuilder()
                 .setAuthor(
@@ -75,7 +77,7 @@ class Dmduyuru : ListenerAdapter() {
                                             member.user.effectiveAvatarUrl
                                         )
                                         .setTitle("${BotProperties.DMDUYURU_EMBED_TITLE} yeni bir duyuru var")
-                                        .setDescription(event.message.contentRaw.split(",")[1])
+                                        .setDescription(event.message.contentRaw.split(Regex(" "),2)[1])
                                         .setFooter("Duyuru yapan: " + event.member!!.user.name + "#" + event.member!!.user.discriminator,
                                             event.member!!.user.effectiveAvatarUrl)
                                         .build()
