@@ -26,7 +26,7 @@ object BotProperties {
     var DMDUYURU_EMBED_TITLE = "Lunar Jailbreak'ten"
 
     @JvmStatic
-    var KAYIT_EDEBILIR_ROLE_ID: Long = 0L
+    var KAYIT_EDEBILIR_ROLE_ID: Long = 740313302613360744
 
 
 
