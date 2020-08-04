@@ -4,14 +4,23 @@ import Main
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 class OzelKomut : ListenerAdapter() {
     override fun onMessageReceived(event: MessageReceivedEvent) {
         if (event.isWebhookMessage) return
         if (event.author.isBot) return
-        if (event.message.contentRaw != "!ip") return
-        if (event.message.contentRaw != "!kayıt") return
+        if (event.message.contentRaw != "!ip") {
+            LoggerFactory.getLogger(OzelKomut::class.java).info("Contentraw isnt !ip returning!")
+            return
+        }
+        if (event.message.contentRaw != "!kayıt") {
+            LoggerFactory.getLogger(OzelKomut::class.java).info("Contentraw isnt !kayit returning!")
+            return
+        }
         if (event.message.contentRaw == "!ip") {
+            LoggerFactory.getLogger(OzelKomut::class.java).info("Contentraw is !ip")
             val embed = EmbedBuilder()
                 .setAuthor(
                     event.author.name + "#" + event.author.discriminator + ", ",
@@ -26,9 +35,11 @@ class OzelKomut : ListenerAdapter() {
                 .setFooter(Main.footer_text, Main.footer_icon_url)
                 .build()
             event.channel.sendMessage(embed).queue()
+            LoggerFactory.getLogger(OzelKomut::class.java).info("Sent ip message")
             return
         }
         else if (event.message.contentRaw == "!kayıt") {
+            LoggerFactory.getLogger(OzelKomut::class.java).info("Contentraw is !kayıt")
             val embed = EmbedBuilder()
                 .setAuthor(
                     event.author.name + "#" + event.author.discriminator + ", ",
@@ -52,6 +63,7 @@ class OzelKomut : ListenerAdapter() {
                 .setFooter(Main.footer_text, Main.footer_icon_url)
                 .build()
             event.message.channel.sendMessage(embed).queue()
+            LoggerFactory.getLogger(OzelKomut::class.java).info("Sent !kayit message!")
             return
         }
 
