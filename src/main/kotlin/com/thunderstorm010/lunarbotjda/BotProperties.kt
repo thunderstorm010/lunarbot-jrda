@@ -28,6 +28,8 @@ object BotProperties {
     @JvmStatic
     var KAYIT_EDEBILIR_ROLE_ID: Long = 740313302613360744
 
+    @JvmStatic
+    var KAYIT_CHANNEL_ID = 738553650611224590L
 
 
 
