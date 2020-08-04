@@ -1,7 +1,11 @@
 import com.thunderstorm010.lunarbotjda.*
 import net.dv8tion.jda.api.JDABuilder
 import net.dv8tion.jda.api.requests.GatewayIntent
+import net.dv8tion.jda.api.utils.MemberCachePolicy
 
+fun JDABuilder.configureCache(): JDABuilder {
+    return this.setMemberCachePolicy(MemberCachePolicy.all(MemberCachePolicy.ALL))
+}
 
 object Main {
 
@@ -15,8 +19,7 @@ object Main {
     @JvmStatic
     fun main(args: Array<String>) {
         val token = System.getenv("BOT_TOKEN")
-        val jda = JDABuilder.createDefault(token)
-        jda.enableIntents(listOf(GatewayIntent.GUILD_MEMBERS,GatewayIntent.DIRECT_MESSAGES))
+        val jda = JDABuilder.createDefault(token).enableIntents(listOf(GatewayIntent.GUILD_MEMBERS,GatewayIntent.DIRECT_MESSAGES)).configureCache()
         jda
             .addEventListeners(
                 Deleter(),

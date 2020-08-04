@@ -4,6 +4,9 @@ import Main
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
+import net.dv8tion.jda.api.utils.MemberCachePolicy
+import java.lang.Exception
+import java.lang.UnsupportedOperationException
 import java.time.Duration
 
 
@@ -56,32 +59,35 @@ class Dmduyuru : ListenerAdapter() {
             .setDescription("İşlem başlandı. İşlem bitince bu mesaj otomatik olarak silinecek.")
             .setFooter(Main.footer_text, Main.footer_icon_url)
             .build()
-        event.message.channel.sendMessage(embed2).queue {
-            val message = event.message.contentRaw.split(" ")[1]
-            val embed = EmbedBuilder()
-                .setAuthor(
-                    event.author.name + "#" + event.author.discriminator + ", ",
-                    null,
-                    event.author.effectiveAvatarUrl
-                )
-                .setTitle("${BotProperties.DMDUYURU_EMBED_TITLE} yeni bir duyuru var!")
-                .setDescription(message)
-                .setFooter(
-                    "Duyuruyu yapan: " + event.author.name + "#" + event.author.discriminator,
-                    event.author.effectiveAvatarUrl
-                )
-                .build()
-            for (f in event.guild.members) {
-                if (f.user != f.jda.selfUser || !f.user.isBot) {
-                    f.user.openPrivateChannel()
-                        .queue {
-                            it.sendMessage(embed).queue()
-                        }
-                }
+            event.channel.sendMessage(embed2).queue {
+                Thread {
+                    for (member in event.guild.loadMembers().get()) {
+                        try {
+                            member.user.openPrivateChannel().queue {
 
+                                it.sendMessage(
+                                    EmbedBuilder()
+                                        .setAuthor(
+                                            member.user.name + "#" + member.user.discriminator + ",",
+                                            null,
+                                            member.user.effectiveAvatarUrl
+                                        )
+                                        .setTitle("${BotProperties.DMDUYURU_EMBED_TITLE} yeni bir duyuru var")
+                                        .setDescription(event.message.contentRaw.split(" ")[1])
+                                        .setFooter("Duyuru yapan: " + event.member!!.user.name + "#" + event.member!!.user.discriminator,
+                                            event.member!!.user.effectiveAvatarUrl)
+                                        .build()
+                                ).queue()
+                            }
+                        } catch (e: Exception) {}
+                    }
+                }.start()
+                it.delete().queue()
+                event.message.delete()
             }
-            it.delete().queue()
-        }
+
+
+
 
 
     }
