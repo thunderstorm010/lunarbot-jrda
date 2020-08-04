@@ -70,17 +70,17 @@ class Dmduyuru : ListenerAdapter() {
                             member.user.openPrivateChannel().queue {
 
                                 it.sendMessage(
-                                    EmbedBuilder()
-                                        .setAuthor(
-                                            member.user.name + "#" + member.user.discriminator + ",",
-                                            null,
-                                            member.user.effectiveAvatarUrl
-                                        )
-                                        .setTitle("${BotProperties.DMDUYURU_EMBED_TITLE} yeni bir duyuru var")
-                                        .setDescription(event.message.contentRaw.split(Regex(" "),2)[1])
-                                        .setFooter("Duyuru yapan: " + event.member!!.user.name + "#" + event.member!!.user.discriminator,
-                                            event.member!!.user.effectiveAvatarUrl)
-                                        .build()
+                                        EmbedBuilder()
+                                                .setAuthor(
+                                                        member.user.name + "#" + member.user.discriminator + ",",
+                                                        null,
+                                                        member.user.effectiveAvatarUrl
+                                                )
+                                                .setTitle("${BotProperties.DMDUYURU_EMBED_TITLE} yeni bir duyuru var")
+                                                .setDescription(event.message.contentRaw.split(Regex(" "),2)[1])
+                                                .setFooter("Duyuru yapan: " + event.member!!.user.name + "#" + event.member!!.user.discriminator,
+                                                        event.member!!.user.effectiveAvatarUrl)
+                                                .build()
                                 ).queue()
                             }
                         } catch (e: Exception) {}
@@ -89,10 +89,10 @@ class Dmduyuru : ListenerAdapter() {
                 it.delete().queue()
                 event.message.delete()
             }
+            }
 
 
 
 
 
     }
-}

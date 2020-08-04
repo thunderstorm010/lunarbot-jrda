@@ -21,7 +21,8 @@ class Yardim : ListenerAdapter() {
                     "\n!ip :: Sunucu ipsini ve discord adresini yazdırır." +
                     "\n!kayıt :: Kayıt mesajını yazdırır." +
                     "\n!shutdown :: Botu güvenli bir şekilde kapatır." +
-                    "\n!sil [sayı] :: Belirtilen sayıdaki mesajları siler."
+                    "\n!sil [sayı] :: Belirtilen sayıdaki mesajları siler." +
+                    "\n!işlem [işlem] :: Belirtilen işlemin sonucunu gösterir."
         val helpEmbed = EmbedBuilder()
             .setAuthor(
                 event.author.name + "#" + event.author.discriminator + ", ",

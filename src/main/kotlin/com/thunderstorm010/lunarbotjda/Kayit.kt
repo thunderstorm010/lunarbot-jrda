@@ -86,8 +86,10 @@ class Kayit : ListenerAdapter() {
             .setFooter(Main.footer_text,Main.footer_icon_url)
             .setDescription("İşlem başarıyla tamamlandı.")
             .build().let {
-                event.channel.sendMessage(it).delay(Duration.ofSeconds(5))
+                event.channel.sendMessage(it)
+                        .delay(Duration.ofSeconds(5))
                     .flatMap { it.delete() }
+                        .queue()
             }
 
 
