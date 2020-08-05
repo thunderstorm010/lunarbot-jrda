@@ -1,1 +1,1 @@
-worker: bash gradlew startprogram
+worker: ./gradlew startprogram
