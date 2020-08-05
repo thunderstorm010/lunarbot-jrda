@@ -7,8 +7,10 @@ class KelimeTuretmece: ListenerAdapter() {
     override fun onGuildMessageReceived(event: GuildMessageReceivedEvent) {
         if (event.author.isBot) return
         if (event.channel != event.jda.getTextChannelById(738553651655737376)) return
-        if (event.channel.history.getMessageById(event.channel.latestMessageIdLong)!!.contentRaw.last() != event.message.contentRaw.first() ) {
-            event.message.delete().queue()
+        event.channel.retrieveMessageById(event.channel.latestMessageIdLong).queue {
+            if (event.message.contentRaw.first() != it.contentRaw.last()) {
+                event.message.delete().queue()
+            }
         }
 
     }
