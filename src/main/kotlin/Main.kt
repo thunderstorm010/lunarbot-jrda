@@ -31,7 +31,8 @@ object Main {
                 Yardim(),
                 Kayit(),
                 Otorun(),
-                Islem()
+                Islem(),
+                KelimeTuretmece()
             )
             .build()
             .awaitReady()
