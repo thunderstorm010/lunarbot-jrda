@@ -28,11 +28,14 @@ shadowJar {
 }
 
 
-task stage(type: JavaExec) {
+task startprogram(type: JavaExec) {
     main = 'Main'
     classpath = sourceSets.main.runtimeClasspath
 }
 
+task stage() {
+
+}
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
     implementation 'net.dv8tion:JDA:4.2.0_184'
