@@ -19,7 +19,7 @@ class Deleter : ListenerAdapter() {
                     null,
                     event.author.effectiveAvatarUrl
                 )
-                .setTitle("!dmduyuru")
+                .setTitle("!sil")
                 .setDescription("Bunu yapmaya yetkin yok.")
                 .setFooter(Main.footer_text, Main.footer_icon_url)
                 .build()
@@ -37,7 +37,7 @@ class Deleter : ListenerAdapter() {
                         null,
                         event.author.effectiveAvatarUrl
                     )
-                    .setTitle("!dmduyuru")
+                    .setTitle("!sil")
                     .setDescription("Bu sunucuda \"Mesajları Yönet\" yetkim yok. Bu işlem gerçekleştirilemeyecek.")
                     .setFooter(Main.footer_text, Main.footer_icon_url)
                     .build()
@@ -49,7 +49,6 @@ class Deleter : ListenerAdapter() {
             }
         }
         if (event.message.contentRaw.split(" ").getOrNull(1) == null) {
-            println("it null doe")
             event.message.channel.sendMessage("Silinecek mesajların sayısı belirtilmemiş.")
                 .delay(Duration.ofSeconds(3))
                 .flatMap { it.delete() }

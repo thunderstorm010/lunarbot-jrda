@@ -11,6 +11,7 @@ class Kayit : ListenerAdapter() {
         if (event.isWebhookMessage) return
         if (event.author.isBot) return
         if (!event.message.contentRaw.startsWith("!kayıtet")) return
+        if (!event.member!!.roles.contains(event.jda.getRoleById(BotProperties.KAYIT_EDEBILIR_ROLE_ID))) return
         try {
             event.message.contentRaw.split(" ")[1]
         } catch (e: IndexOutOfBoundsException) {

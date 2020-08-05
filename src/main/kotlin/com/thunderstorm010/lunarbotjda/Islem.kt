@@ -35,7 +35,7 @@ class Islem: ListenerAdapter() {
                             event.author.effectiveAvatarUrl
                     )
                     .setTitle("!işlem")
-                    .setDescription("İşlem geçersiz.")
+                    .setDescription("İşlem geçersiz veya hesaplanamadı.")
                     .setFooter(Main.footer_text, Main.footer_icon_url)
                     .build()
                     .let {
@@ -50,7 +50,7 @@ class Islem: ListenerAdapter() {
                         event.author.effectiveAvatarUrl
                 )
                 .setTitle("!işlem")
-                .setDescription("Sonuç: " + Expression(expression).calculate().toString())
+                .setDescription("Sonuç: **" + Expression(expression).calculate().toString() + "**")
                 .setFooter(Main.footer_text, Main.footer_icon_url)
                 .build()
                 .let {
